@@ -99,6 +99,124 @@
             padding: 0 20px;
         }
 
+        /* Navigation Menu */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--glass-border);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(15, 23, 42, 0.95);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--cyan), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--cyan);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--cyan), var(--purple));
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: var(--cyan);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        /* Mobile Navigation */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 60px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 60px);
+                background: rgba(15, 23, 42, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                gap: 0;
+                padding: 30px 0;
+                transition: left 0.3s ease;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links a {
+                padding: 15px 30px;
+                width: 100%;
+                text-align: center;
+                font-size: 1.1rem;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+
         /* Glass card effect */
         .glass-card {
             background: var(--glass-bg);
@@ -722,6 +840,23 @@
     </style>
 </head>
 <body>
+    <!-- Navigation Menu -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">AJ → Profila CTO</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#why">Why Profila</a></li>
+                <li><a href="#roadmap">90-Day Plan</a></li>
+                <li><a href="#tech">Tech Stack</a></li>
+                <li><a href="#compensation">Compensation</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+        </div>
+    </nav>
+
     <!-- Loading Animation -->
     <div id="loader">
         <div class="loader-content">
@@ -731,7 +866,7 @@
     </div>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section id="home" class="hero">
         <div class="container">
             <div class="badge">⚡ Built in 5 minutes with AI • Proving AI-Accelerated Development</div>
             <h1>Amir Jalali → Profila CTO</h1>
@@ -739,7 +874,7 @@
 
             <div class="cta-buttons">
                 <a href="#roadmap" class="btn btn-primary">View 90-Day Plan</a>
-                <a href="mailto:jalali.amir.reza@gmail.com" class="btn btn-secondary">Contact</a>
+                <a href="mailto:amirreza_jalali@outlook.com" class="btn btn-secondary">Contact</a>
             </div>
 
             <div class="stats-bar">
@@ -986,11 +1121,11 @@
             <div class="contact-info">
                 <div class="contact-item">
                     <div class="contact-label">Email</div>
-                    <a href="mailto:jalali.amir.reza@gmail.com">jalali.amir.reza@gmail.com</a>
+                    <a href="mailto:amirreza_jalali@outlook.com">amirreza_jalali@outlook.com</a>
                 </div>
                 <div class="contact-item">
                     <div class="contact-label">LinkedIn</div>
-                    <a href="https://linkedin.com/in/jalaliamirreza" target="_blank">linkedin.com/in/jalaliamirreza</a>
+                    <a href="https://linkedin.com/in/amir-jalali" target="_blank">linkedin.com/in/amir-jalali</a>
                 </div>
                 <div class="contact-item">
                     <div class="contact-label">GitHub</div>
@@ -1003,7 +1138,7 @@
             </div>
 
             <div class="cta-buttons">
-                <a href="mailto:jalali.amir.reza@gmail.com?subject=Profila CTO Position - Let's Talk" class="btn btn-primary">Let's Talk</a>
+                <a href="mailto:amirreza_jalali@outlook.com?subject=Profila CTO Position - Let's Talk" class="btn btn-primary">Let's Talk</a>
                 <a href="#roadmap" class="btn btn-secondary">Review 90-Day Plan</a>
             </div>
 
@@ -1027,6 +1162,58 @@
                 document.getElementById('loader').classList.add('hidden');
             }, 1000);
         });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.textContent = '☰';
+            });
+        });
+
+        // Navigation scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Active navigation link based on scroll position
+        const sections = document.querySelectorAll('section[id]');
+        const navLinksArray = document.querySelectorAll('.nav-links a');
+
+        function updateActiveNav() {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinksArray.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveNav);
+        updateActiveNav();
 
         // Scroll animations
         const observerOptions = {
